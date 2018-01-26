@@ -164,13 +164,17 @@
     NSInteger grayCount = colorCount - hueCount - 1; // -1 for transparency at the end
     for (NSInteger i = 0; i < hueCount; i++)
     {
-        UIColor* color = [UIColor colorWithHue:(CGFloat)i / (CGFloat)hueCount saturation:1.0 brightness:1.0 alpha:1.0];
-        [colors addObject:[[DRColorPickerColor alloc] initWithColor:color]];
+        UIColor* color = [UIColor colorWithHue:(CGFloat)((CGFloat)i / (CGFloat)hueCount) saturation:1.0 brightness:1.0 alpha:1.0];
+        DRColorPickerColor * pickerColor = [[DRColorPickerColor alloc] initWithColor:color];
+        pickerColor.alpha = 1.0;
+        [colors addObject:pickerColor];
     }
     for (NSInteger i = 0; i < grayCount; i++)
     {
-        UIColor* color = [UIColor colorWithWhite:(CGFloat)i / (CGFloat)grayCount alpha:1.0];
-        [colors addObject:[[DRColorPickerColor alloc] initWithColor:color]];
+        UIColor* color = [UIColor colorWithWhite:(CGFloat)((CGFloat)i / (CGFloat)grayCount) alpha:1.0];
+        DRColorPickerColor * pickerColor = [[DRColorPickerColor alloc] initWithColor:color];
+        pickerColor.alpha = 1.0;
+        [colors addObject:pickerColor];
     }
     [colors addObject:[[DRColorPickerColor alloc] initWithColor:[UIColor clearColor]]];
     self.standardColors.colors = colors;
